@@ -95,7 +95,11 @@ else {
     }
 
     if ($Version) {
-        $match = $installs | Where-Object { $_.Raw -eq $Version -or $_.Version -eq [version]$Version } | Select-Object -First 1
+        $parsedRequested = $null
+        [void][version]::TryParse($Version, [ref]$parsedRequested)
+        $match = $installs | Where-Object {
+            $_.Raw -eq $Version -or ($parsedRequested -and $_.Version -eq $parsedRequested)
+        } | Select-Object -First 1
         if (-not $match) {
             $available = ($installs | Sort-Object Version -Descending | ForEach-Object { $_.Raw }) -join ', '
             Write-Error "Unreal Engine $Version is not installed. Found: $available"
