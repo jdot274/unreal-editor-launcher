@@ -51,6 +51,7 @@ launch-unreal-editor.bat
 .\launch-unreal-editor.ps1
 
 # Pick a specific engine version
+# (use the form that appears in the install folder name, e.g. UE_5.3 -> "5.3")
 .\launch-unreal-editor.ps1 -Version 5.3
 
 # Open a project
