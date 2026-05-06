@@ -19,6 +19,20 @@ Both scripts:
    - `D:\Epic Games\UE_*`
 3. Launch the newest installed `UnrealEditor.exe` (or a specific version).
 
+## One-line install (PowerShell)
+
+On a Windows machine (including a Shadow PC), open PowerShell and run:
+
+```powershell
+irm https://raw.githubusercontent.com/jdot274/unreal-editor-launcher/main/install.ps1 | iex
+```
+
+This downloads the scripts to `%USERPROFILE%\unreal-editor-launcher` and adds that folder to your user `PATH`, so you can run `launch-unreal-editor.bat` from any new terminal. To install without touching `PATH`:
+
+```powershell
+& ([scriptblock]::Create((irm https://raw.githubusercontent.com/jdot274/unreal-editor-launcher/main/install.ps1))) -SkipPath
+```
+
 ## Prerequisites
 
 - Windows 10 or 11
